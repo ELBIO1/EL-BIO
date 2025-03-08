@@ -1,21 +1,16 @@
 body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #f4f4f4;
     font-family: Arial, sans-serif;
+    background: #f4f4f4;
     text-align: center;
 }
 
 .container {
     background: white;
-    padding: 30px;
+    padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 400px;
+    width: 50%;
+    margin: auto;
 }
 
 h2, h3 {
@@ -93,4 +88,9 @@ button:nth-child(3) {
 
 button:nth-child(3):hover {
     background: darkred;
+}
+
+iframe {
+    margin-top: 20px;
+    border: none;
 }
