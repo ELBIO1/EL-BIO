@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ملفات PDF</title>
+    <title>📚 ملفات PDF التعليمية</title>
     <link rel="stylesheet" href="stylespdf.css">
 </head>
 <body>
     <div class="container">
         <h2>📚 ملفات PDF التعليمية</h2>
 
-        <!-- رفع ملفات PDF متعددة -->
-        <input type="file" id="uploadPdf" accept="application/pdf" multiple>
-        <button onclick="uploadFile()">📤 رفع الملفات</button>
+        <!-- رفع ملف PDF -->
+        <div class="upload-section">
+            <input type="file" id="uploadPdf" accept="application/pdf">
+            <button onclick="uploadFile()">📤 رفع الملف</button>
+        </div>
 
         <!-- قائمة الملفات المتاحة -->
         <h3>📂 الملفات المتاحة:</h3>
