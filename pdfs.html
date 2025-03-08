@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ملفات PDF</title>
+    <link rel="stylesheet" href="stylespdf.css">
+</head>
+<body>
+    <div class="container">
+        <h2>📚 ملفات PDF التعليمية</h2>
+
+        <!-- رفع ملف PDF -->
+        <input type="file" id="uploadPdf" accept="application/pdf">
+        <button onclick="uploadFile()">رفع الملف</button>
+
+        <!-- قائمة الملفات المتاحة -->
+        <h3>📂 الملفات المتاحة:</h3>
+        <ul id="pdfList"></ul>
+    </div>
+
+    <script src="scriptpdf.js"></script>
+</body>
+</html>
