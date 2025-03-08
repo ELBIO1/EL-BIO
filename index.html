@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EL~BIO - منصة تعليمية</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #121212;
+            text-align: center;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        .logo {
+            font-size: 50px;
+            color: gold;
+            font-weight: bold;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: scale(0.5); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        .button-container {
+            margin-top: 20px;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+            animation-delay: 2s;
+        }
+        .register-btn {
+            text-decoration: none;
+            background: gold;
+            color: black;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 20px;
+            display: inline-block;
+            transition: 0.3s;
+        }
+        .register-btn:hover {
+            background: darkgoldenrod;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">EL~BIO</div>
+    <div class="button-container">
+        <a href="signup.html" class="register-btn">سجل الآن</a>
+    </div>
+</body>
+</html>
