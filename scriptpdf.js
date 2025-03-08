@@ -1,46 +1,32 @@
-// تحميل قائمة الملفات عند فتح الصفحة
 document.addEventListener("DOMContentLoaded", function () {
     loadPdfFiles();
 });
 
-// رفع ملفات PDF متعددة
+// رفع ملف PDF وحفظه في LocalStorage
 function uploadFile() {
     let fileInput = document.getElementById("uploadPdf");
-    let files = fileInput.files;
+    let file = fileInput.files[0];
 
-    if (files.length === 0) {
-        alert("يرجى اختيار ملفات PDF للرفع!");
-        return;
+    if (file && file.type === "application/pdf") {
+        let reader = new FileReader();
+
+        reader.onload = function (event) {
+            let pdfData = event.target.result;
+
+            // حفظ الملف في LocalStorage
+            let pdfFiles = JSON.parse(localStorage.getItem("pdfFiles")) || [];
+            pdfFiles.push({ name: file.name, data: pdfData });
+            localStorage.setItem("pdfFiles", JSON.stringify(pdfFiles));
+
+            alert("✅ تم رفع الملف بنجاح!");
+            fileInput.value = ""; // مسح الاختيار بعد الرفع
+            loadPdfFiles(); // إعادة تحميل القائمة
+        };
+
+        reader.readAsDataURL(file);
+    } else {
+        alert("⚠️ يرجى اختيار ملف PDF صالح!");
     }
-
-    let pdfFiles = JSON.parse(localStorage.getItem("pdfFiles")) || [];
-    let promises = [];
-
-    for (let i = 0; i < files.length; i++) {
-        let file = files[i];
-
-        if (file.type === "application/pdf") {
-            let reader = new FileReader();
-            let promise = new Promise((resolve) => {
-                reader.onload = function (event) {
-                    pdfFiles.push({ name: file.name, data: event.target.result });
-                    resolve();
-                };
-            });
-
-            reader.readAsDataURL(file);
-            promises.push(promise);
-        } else {
-            alert("❌ يرجى اختيار ملفات PDF فقط!");
-        }
-    }
-
-    // حفظ الملفات بعد تحميل جميعها
-    Promise.all(promises).then(() => {
-        localStorage.setItem("pdfFiles", JSON.stringify(pdfFiles));
-        alert("✅ تم رفع الملفات بنجاح!");
-        loadPdfFiles();
-    });
 }
 
 // تحميل الملفات وعرضها في القائمة
@@ -58,14 +44,20 @@ function loadPdfFiles() {
         link.target = "_blank";
         link.textContent = file.name;
 
+        let viewBtn = document.createElement("button");
+        viewBtn.textContent = "👁️ مشاهدة";
+        viewBtn.onclick = function () {
+            window.open(file.data, "_blank");
+        };
+
         let deleteBtn = document.createElement("button");
-        deleteBtn.textContent = "🗑 حذف";
-        deleteBtn.classList.add("delete");
+        deleteBtn.textContent = "❌ حذف";
         deleteBtn.onclick = function () {
             deletePdf(index);
         };
 
         listItem.appendChild(link);
+        listItem.appendChild(viewBtn);
         listItem.appendChild(deleteBtn);
         pdfList.appendChild(listItem);
     });
@@ -76,5 +68,6 @@ function deletePdf(index) {
     let pdfFiles = JSON.parse(localStorage.getItem("pdfFiles")) || [];
     pdfFiles.splice(index, 1);
     localStorage.setItem("pdfFiles", JSON.stringify(pdfFiles));
-    loadPdfFiles();
+
+    loadPdfFiles(); // تحديث القائمة
 }
