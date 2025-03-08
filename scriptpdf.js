@@ -1,32 +1,39 @@
-// تحميل قائمة الملفات من LocalStorage عند تحميل الصفحة
+// تحميل قائمة الملفات عند فتح الصفحة
 document.addEventListener("DOMContentLoaded", function () {
     loadPdfFiles();
 });
 
-// رفع ملف PDF
+// رفع ملفات PDF متعددة
 function uploadFile() {
     let fileInput = document.getElementById("uploadPdf");
-    let file = fileInput.files[0];
+    let files = fileInput.files;
 
-    if (file && file.type === "application/pdf") {
-        let reader = new FileReader();
-
-        reader.onload = function (event) {
-            let pdfData = event.target.result;
-
-            // حفظ الملف في LocalStorage
-            let pdfFiles = JSON.parse(localStorage.getItem("pdfFiles")) || [];
-            pdfFiles.push({ name: file.name, data: pdfData });
-            localStorage.setItem("pdfFiles", JSON.stringify(pdfFiles));
-
-            alert("تم رفع الملف بنجاح!");
-            loadPdfFiles(); // إعادة تحميل القائمة
-        };
-
-        reader.readAsDataURL(file);
-    } else {
-        alert("يرجى اختيار ملف PDF صالح!");
+    if (files.length === 0) {
+        alert("يرجى اختيار ملفات PDF للرفع!");
+        return;
     }
+
+    let pdfFiles = JSON.parse(localStorage.getItem("pdfFiles")) || [];
+
+    for (let i = 0; i < files.length; i++) {
+        let file = files[i];
+
+        if (file.type === "application/pdf") {
+            let reader = new FileReader();
+
+            reader.onload = function (event) {
+                pdfFiles.push({ name: file.name, data: event.target.result });
+                localStorage.setItem("pdfFiles", JSON.stringify(pdfFiles));
+                loadPdfFiles(); // تحديث القائمة
+            };
+
+            reader.readAsDataURL(file);
+        } else {
+            alert("يرجى اختيار ملفات PDF فقط!");
+        }
+    }
+
+    alert("تم رفع الملفات بنجاح!");
 }
 
 // تحميل الملفات وعرضها في القائمة
@@ -45,7 +52,8 @@ function loadPdfFiles() {
         link.textContent = file.name;
 
         let deleteBtn = document.createElement("button");
-        deleteBtn.textContent = "❌";
+        deleteBtn.textContent = "🗑 حذف";
+        deleteBtn.classList.add("delete");
         deleteBtn.onclick = function () {
             deletePdf(index);
         };
@@ -61,6 +69,5 @@ function deletePdf(index) {
     let pdfFiles = JSON.parse(localStorage.getItem("pdfFiles")) || [];
     pdfFiles.splice(index, 1);
     localStorage.setItem("pdfFiles", JSON.stringify(pdfFiles));
-
-    loadPdfFiles(); // تحديث القائمة
+    loadPdfFiles();
 }
