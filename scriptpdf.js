@@ -14,26 +14,33 @@ function uploadFile() {
     }
 
     let pdfFiles = JSON.parse(localStorage.getItem("pdfFiles")) || [];
+    let promises = [];
 
     for (let i = 0; i < files.length; i++) {
         let file = files[i];
 
         if (file.type === "application/pdf") {
             let reader = new FileReader();
-
-            reader.onload = function (event) {
-                pdfFiles.push({ name: file.name, data: event.target.result });
-                localStorage.setItem("pdfFiles", JSON.stringify(pdfFiles));
-                loadPdfFiles(); // تحديث القائمة
-            };
+            let promise = new Promise((resolve) => {
+                reader.onload = function (event) {
+                    pdfFiles.push({ name: file.name, data: event.target.result });
+                    resolve();
+                };
+            });
 
             reader.readAsDataURL(file);
+            promises.push(promise);
         } else {
-            alert("يرجى اختيار ملفات PDF فقط!");
+            alert("❌ يرجى اختيار ملفات PDF فقط!");
         }
     }
 
-    alert("تم رفع الملفات بنجاح!");
+    // حفظ الملفات بعد تحميل جميعها
+    Promise.all(promises).then(() => {
+        localStorage.setItem("pdfFiles", JSON.stringify(pdfFiles));
+        alert("✅ تم رفع الملفات بنجاح!");
+        loadPdfFiles();
+    });
 }
 
 // تحميل الملفات وعرضها في القائمة
