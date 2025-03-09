@@ -3,51 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EL~BIO | المنصة التعليمية</title>
-    <link rel="stylesheet" href="styless.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <title>EL~BIO - الصفحة الرئيسية</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-    <!-- ✅ الشريط العلوي -->
-    <nav class="navbar">
+    <!-- ✅ شريط التنقل العلوي -->
+    <header>
         <h1>EL~BIO</h1>
-        <ul class="nav-links">
-            <li><a href="#">🏠 Home</a></li>
-            <li><a href="#">🎥 Videos</a></li>
-            <li><a href="#">📄 Documents</a></li>
-            <li><a href="#">📚 Lessons</a></li>
-        </ul>
-    </nav>
+        <nav>
+            <ul>
+                <li><a href="#">🏠 الرئيسية</a></li>
+                <li><a href="#">🎥 فيديوهات</a></li>
+                <li><a href="#">📄 ملفات PDF</a></li>
+                <li><a href="#">📚 دروس</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <!-- ✅ الشريط الجانبي -->
+    <!-- ✅ شريط جانبي -->
     <aside class="sidebar">
-        <h2>EL~BIO</h2>
+        <h2>📌 القائمة</h2>
         <ul>
-            <li><a href="#">🏠 Home</a></li>
-            <li><a href="#">🎥 Videos</a></li>
-            <li><a href="#">📄 Documents</a></li>
-            <li><a href="#">📚 Lessons</a></li>
+            <li><a href="#">🏠 الرئيسية</a></li>
+            <li><a href="#">🎥 فيديوهات</a></li>
+            <li><a href="#">📄 ملفات PDF</a></li>
+            <li><a href="#">📚 دروس</a></li>
         </ul>
-        <h3>🔔 الجديد:</h3>
-        <p>📌 إضافة دروس جديدة في الأحياء.</p>
-        <p>📌 تحديث نظام الاختبارات.</p>
-
-        <h3>تابعنا:</h3>
-        <div class="social-icons">
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-        </div>
-
-        <p class="copyright">© 2025 EL~BIO. جميع الحقوق محفوظة.</p>
+        <p>© 2025 EL~BIO. جميع الحقوق محفوظة.</p>
     </aside>
 
     <!-- ✅ المحتوى الرئيسي -->
-    <main class="content">
-        <h2>مرحبًا بك في EL~BIO 🎉</h2>
-        <p>تعلم بطريقة ممتعة مع الفيديوهات والاختبارات والملفات التعليمية.</p>
+    <main>
+        <h2>مرحبًا بك في EL~BIO</h2>
+        <div class="content-grid">
+            <div class="card">
+                <img src="video-icon.png" alt="فيديوهات">
+                <h3>🎥 فيديوهات</h3>
+                <p>شاهد دروس تعليمية بالفيديو.</p>
+            </div>
+            <div class="card">
+                <img src="pdf-icon.png" alt="ملفات PDF">
+                <h3>📄 ملفات PDF</h3>
+                <p>تحميل وقراءة ملفات تعليمية.</p>
+            </div>
+            <div class="card">
+                <img src="lesson-icon.png" alt="دروس">
+                <h3>📚 دروس</h3>
+                <p>استمتع بالدروس التفاعلية.</p>
+            </div>
+        </div>
     </main>
-
 </body>
 </html>
