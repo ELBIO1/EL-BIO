@@ -46,7 +46,7 @@ function loginUser() {
 
 // ✅ التأكد من تسجيل الدخول قبل الدخول للصفحة الرئيسية
 document.addEventListener("DOMContentLoaded", function () {
-    if (window.location.pathname.includes("home.html")) {
+    if (window.location.pathname.includes("dashboard.html")) {
         let currentUser = JSON.parse(localStorage.getItem("currentUser"));
         if (!currentUser) {
             alert("⚠️ يجب تسجيل الدخول أولًا!");
