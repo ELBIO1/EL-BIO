@@ -38,7 +38,7 @@ function loginUser() {
     if (validUser) {
         alert(`🎉 مرحبًا ${validUser.username}! تسجيل الدخول ناجح.`);
         localStorage.setItem("currentUser", JSON.stringify(validUser));
-        window.location.href = "home.html"; // تحويل المستخدم للصفحة الرئيسية
+        window.location.href = "dashboard.html"; // تحويل المستخدم للصفحة الرئيسية
     } else {
         alert("❌ البريد الإلكتروني أو كلمة المرور غير صحيحة!");
     }
