@@ -7,14 +7,12 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
+    <div class="form-container">
         <h2>إنشاء حساب جديد</h2>
-        <form id="signupForm">
-            <input type="text" id="newUsername" placeholder="اسم المستخدم" required>
-            <input type="email" id="email" placeholder="البريد الإلكتروني" required>
-            <input type="password" id="newPassword" placeholder="كلمة المرور" required>
-            <button type="submit">إنشاء حساب</button>
-        </form>
+        <input type="text" id="username" placeholder="👤 اسم المستخدم" required>
+        <input type="email" id="email" placeholder="📧 البريد الإلكتروني" required>
+        <input type="password" id="password" placeholder="🔑 كلمة المرور" required>
+        <button onclick="registerUser()">✅ تسجيل</button>
         <p>لديك حساب بالفعل؟ <a href="login.html">تسجيل الدخول</a></p>
     </div>
 
