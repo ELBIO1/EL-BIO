@@ -4,7 +4,7 @@ function registerUser() {
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
 
-    if (username === "" || email === "" || password === "") {
+    if (!username || !email || !password) {
         alert("⚠️ الرجاء ملء جميع الحقول!");
         return;
     }
