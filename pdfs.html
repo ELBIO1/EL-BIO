@@ -3,51 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EL~BIO | المنصة التعليمية</title>
+    <title>📚 ملفات PDF التعليمية</title>
     <link rel="stylesheet" href="stylespdf.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <div class="container">
+        <h2>📚 ملفات PDF التعليمية</h2>
 
-    <!-- ✅ الشريط العلوي -->
-    <nav class="navbar">
-        <h1>EL~BIO</h1>
-        <ul class="nav-links">
-            <li><a href="#">🏠 Home</a></li>
-            <li><a href="#">🎥 Videos</a></li>
-            <li><a href="#">📄 Documents</a></li>
-            <li><a href="#">📚 Lessons</a></li>
-        </ul>
-    </nav>
-
-    <!-- ✅ الشريط الجانبي -->
-    <aside class="sidebar">
-        <h2>EL~BIO</h2>
-        <ul>
-            <li><a href="#">🏠 Home</a></li>
-            <li><a href="#">🎥 Videos</a></li>
-            <li><a href="#">📄 Documents</a></li>
-            <li><a href="#">📚 Lessons</a></li>
-        </ul>
-        <h3>🔔 الجديد:</h3>
-        <p>📌 إضافة دروس جديدة في الأحياء.</p>
-        <p>📌 تحديث نظام الاختبارات.</p>
-
-        <h3>تابعنا:</h3>
-        <div class="social-icons">
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
+        <!-- رفع ملف PDF -->
+        <div class="upload-section">
+            <input type="file" id="uploadPdf" accept="application/pdf">
+            <button onclick="uploadFile()">📤 رفع الملف</button>
         </div>
 
-        <p class="copyright">© 2025 EL~BIO. جميع الحقوق محفوظة.</p>
-    </aside>
+        <!-- قائمة الملفات المتاحة -->
+        <h3>📂 الملفات المتاحة:</h3>
+        <ul id="pdfList"></ul>
 
-    <!-- ✅ المحتوى الرئيسي -->
-    <main class="content">
-        <h2>مرحبًا بك في EL~BIO 🎉</h2>
-        <p>تعلم بطريقة ممتعة مع الفيديوهات والاختبارات والملفات التعليمية.</p>
-    </main>
+        <!-- إطار عرض الـ PDF -->
+        <iframe id="pdfViewer" style="display: none; width: 100%; height: 500px;"></iframe>
+    </div>
 
+    <script src="scriptpdf.js"></script>
 </body>
 </html>
